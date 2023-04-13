@@ -7,7 +7,7 @@ source "$CURRENT_DIR/helpers.sh"
 print_ram_usage() {
   if is_linux; then
     function getRamUsage() {
-        ramUsage=$(free -m | grep $memKeyword | awk '{print $3/$2 * 100}' | cut -f1 -d".")
+        ramUsage=$(free -m | grep $memKeyword | awk '{printf "%.1f", $3/$2*100}' | tr ',' '.')
     }
 
     memKeyword="Mem"
